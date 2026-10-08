@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "calendardb"
+version = "0.1.0"
+description = "Store your logs and agent traces in Google Calendar. Your database has a day view."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "CalendarDB" }]
+keywords = ["observability", "logging", "database", "calendar", "satire"]
+dependencies = ["google-auth>=2", "google-auth-oauthlib>=1", "keyring>=24"]
+
+[project.urls]
+Homepage = "https://github.com/that-guy-wade/calendardb"
+Repository = "https://github.com/that-guy-wade/calendardb"
+
+[project.optional-dependencies]
+otel = ["opentelemetry-sdk>=1.20"]
+dev = ["pytest>=8", "ruff>=0.9", "radon>=6", "build>=1"]
+
+[project.scripts]
+calendardb = "calendardb.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/calendardb"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "C901"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
