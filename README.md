@@ -2,7 +2,13 @@
 
 CalendarDB is a tiny time-series store with a day view. It writes each record as a private, transparent one-second event in a dedicated Google Calendar, then reads the event description back as JSON. Your latency graph is now something you can scroll past on the way to lunch.
 
-## Install and run the synthetic demo
+## Install
+
+```sh
+pip install 'calendardb[otel]'
+```
+
+## Run the synthetic demo from a source checkout
 
 ```sh
 python -m venv .venv
